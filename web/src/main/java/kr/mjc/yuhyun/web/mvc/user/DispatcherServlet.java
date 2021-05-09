@@ -1,5 +1,6 @@
 package kr.mjc.yuhyun.web.mvc.user;
 
+import kr.mjc.yuhyun.web.mvc.article.ArticleController;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.servlet.ServletException;
@@ -17,6 +18,7 @@ public class DispatcherServlet extends HttpServlet {
 
   @Autowired
   UserController userController;
+  ArticleController articleController;
 
   @Override
   protected void service(HttpServletRequest request,
@@ -31,6 +33,12 @@ public class DispatcherServlet extends HttpServlet {
       case "/mvc/user/userInfo" -> userController.userInfo(request, response);
       case "/mvc/user/addUser" -> userController.addUser(request, response);
       case "/mvc/user/login" -> userController.login(request, response);
+      case "/mvc/article/articleList" -> articleController.articleList(request, response);
+      case "/mvc/article/loginForm" -> articleController.userForm(request, response);
+      case "/mvc/article/addArticle" -> articleController.addArticle(request, response);
+      case "/mvc/article/modArticle" -> articleController.modArticle(request, response);
+      case "/mvc/article/delArticle" -> articleController.delArticle(request, response);
+      case "/mvc/article/articleDetail" -> articleController.articleDetail(request, response);
       default -> response.sendError(HttpServletResponse.SC_NOT_FOUND);
     }
   }
