@@ -60,5 +60,55 @@ public class ArticleController {
     }
   }
 
+  /**
+   * 게시물 수정 액션
+   */
+  public void modArticle(HttpServletRequest request, HttpServletResponse response)
+          throws IOException {
 
+    Article article = new Article();
+
+    try {
+      articleDao.addArticle(article);
+      response.sendRedirect(request.getContextPath() + "/mvc/article/articleList");
+    } catch (DuplicateKeyException e) {
+      response.sendRedirect(request.getContextPath() +
+              "/mvc/article/articleForm?msg=Duplicate email");
+    }
+  }
+
+  /**
+   * 게시물 삭제 액션
+   */
+  public void delArticle(HttpServletRequest request, HttpServletResponse response)
+          throws IOException {
+
+    Article article = new Article();
+
+    try {
+      articleDao.addArticle(article);
+      response.sendRedirect(request.getContextPath() + "/mvc/article/articleList");
+    } catch (DuplicateKeyException e) {
+      response.sendRedirect(request.getContextPath() +
+              "/mvc/article/articleForm?msg=Duplicate email");
+    }
+  }
+
+  /**
+   * 사용자 등록 화면
+   */
+  public void userForm(HttpServletRequest request, HttpServletResponse response)
+          throws ServletException, IOException {
+
+    request.getRequestDispatcher("/WEB-INF/jsp/model2/user/userForm.jsp")
+            .forward(request, response);
+  }
+
+  /**
+   * 게시글 상세보기
+   */
+  public void articleDetail(HttpServletRequest request, HttpServletResponse response)
+          throws IOException {
+
+  }
 }
