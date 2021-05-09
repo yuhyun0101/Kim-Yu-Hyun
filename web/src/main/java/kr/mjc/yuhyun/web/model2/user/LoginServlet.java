@@ -30,7 +30,7 @@ public class LoginServlet extends HttpServlet {
       User user = userDao.login(email, password);
       HttpSession session = request.getSession();
       session.setAttribute("USER", user);
-      response.sendRedirect(request.getContextPath() + "/model1/user/userInfo");
+      response.sendRedirect(request.getContextPath() + "/model2/user/userInfo");
     } catch (EmptyResultDataAccessException e) {
       response.sendRedirect(request.getContextPath() +
               "/model1/user/loginForm?msg=Wrong email or password");
